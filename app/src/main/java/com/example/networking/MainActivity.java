@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
 
     // private RecyclerViewAdapter adapter;
 
-   // private Gson = gson;
+    // private Gson = gson;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +31,8 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
                 new RecyclerViewItem("Mont Blanc"),
                 new RecyclerViewItem("Denali")
         ));
+
+        //ArrayList<Mountain> mountains = new ArrayList<>();
 
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, items, new RecyclerViewAdapter.OnClickListener() {
 
@@ -46,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         view.setAdapter(adapter);
 
         new JsonFile(this, this).execute(JSON_FILE); //Hämtar en lokal JSON textfil
-        new JsonTask(this).execute(JSON_URL); //Hämtar en JSON textfil från en URL
+      //  new JsonTask(this).execute(JSON_URL); //Hämtar en JSON textfil från en URL
     }
 
     @Override
