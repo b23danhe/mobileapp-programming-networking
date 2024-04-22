@@ -52,6 +52,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         public void onClick(View view) {
             onClickListener.onClick(items.get(getAdapterPosition()));
         }
+
     }
 
     public interface OnClickListener {
