@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
                 new RecyclerViewItem("Denali")
         ));
 
-       // ArrayList<Mountain> mountains = new ArrayList<>(Arrays.asList());
+        //ArrayList<Mountain> mountains = new ArrayList<>(Arrays.asList());
 
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, items, new RecyclerViewAdapter.OnClickListener() {
 
