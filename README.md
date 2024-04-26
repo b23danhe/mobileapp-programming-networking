@@ -1,17 +1,20 @@
 
 # Rapport
 
-**Skriv din rapport här!**
+Jag har lagt till en RecyclerView widget och adapter
+Skapat en Mountain class som innehåller de variablar som JSON filen innehåller men har
+endast en `toString()` metod som ska skriva namnet till en String.
 
-_Du kan ta bort all text som finns sedan tidigare_.
+Med hjälp av denna kodsträng så hämtas JSON filen från URL och laddar in till ett object:
+`new JsonTask(this).execute(JSON_URL);`
 
-## Följande grundsyn gäller dugga-svar:
+Med denna skickas JSON till en lista med objekt
+`Type type = new TypeToken<List<Mountain>>() {}.getType();
+listOfMountains = gson.fromJson(json, type);`
 
-- Ett kortfattat svar är att föredra. Svar som är längre än en sida text (skärmdumpar och programkod exkluderat) är onödigt långt.
-- Svaret skall ha minst en snutt programkod.
-- Svaret skall inkludera en kort övergripande förklarande text som redogör för vad respektive snutt programkod gör eller som svarar på annan teorifråga.
-- Svaret skall ha minst en skärmdump. Skärmdumpar skall illustrera exekvering av relevant programkod. Eventuell text i skärmdumpar måste vara läsbar.
-- I de fall detta efterfrågas, dela upp delar av ditt svar i för- och nackdelar. Dina för- respektive nackdelar skall vara i form av punktlistor med kortare stycken (3-4 meningar).
+Jag har tyvärr inte lyckats med att få bergen att visas i min recyclerView. jag har felsökt och
+testat flera olika saker men vet inte vart felet ligger.
 
+Jag skickar in det jag har och vill försöka lösa det i en komplettering.
 
-![](android.png)
+![](screenshot.png)

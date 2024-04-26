@@ -13,6 +13,7 @@ import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.List;
 
 @SuppressWarnings("FieldCanBeLocal")
 public class MainActivity extends AppCompatActivity implements JsonTask.JsonTaskListener {
@@ -52,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
 
         Gson gson = new Gson();
 
-        Type type = new TypeToken<ArrayList<Mountain>>() {}.getType();
+        Type type = new TypeToken<List<Mountain>>() {}.getType();
         listOfMountains = gson.fromJson(json, type);
 
         adapter.notifyDataSetChanged();
