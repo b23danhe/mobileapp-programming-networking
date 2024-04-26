@@ -13,7 +13,7 @@ Med denna skickas JSON till en lista med objekt
 listOfMountains = gson.fromJson(json, type);`
 
 Jag har tyvärr inte lyckats med att få bergen att visas i min recyclerView. jag har felsökt och
-testat flera olika saker men vet inte vart felet ligger.
+testat flera olika saker men vet inte vart felet ligger..
 
 Jag skickar in det jag har och vill försöka lösa det i en komplettering.
 
