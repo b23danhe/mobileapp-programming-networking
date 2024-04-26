@@ -8,52 +8,60 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 @SuppressWarnings("FieldCanBeLocal")
 public class MainActivity extends AppCompatActivity implements JsonTask.JsonTaskListener {
 
-    private final String JSON_URL = "HTTPS_URL_TO_JSON_DATA_CHANGE_THIS_URL";
-    private final String JSON_FILE = "mountains.json";
+    private final String JSON_URL = "https://mobprog.webug.se/json-api?login=brom";
 
-    // private RecyclerViewAdapter adapter;
+    private RecyclerViewAdapter adapter;
 
-    // private Gson = gson;
+    private ArrayList<Mountain> listOfMountains = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ArrayList<RecyclerViewItem> items = new ArrayList<>(Arrays.asList(
-                new RecyclerViewItem("Matterhorn"),
-                new RecyclerViewItem("Mont Blanc"),
-                new RecyclerViewItem("Denali")
-        ));
-
-        //ArrayList<Mountain> mountains = new ArrayList<>(Arrays.asList());
-
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, items, new RecyclerViewAdapter.OnClickListener() {
+        adapter = new RecyclerViewAdapter(this, listOfMountains, new RecyclerViewAdapter.OnClickListener() {
 
             @Override
-            public void onClick(RecyclerViewItem item) {
-                Toast.makeText(MainActivity.this, item.getTitle(), Toast.LENGTH_SHORT).show();
+            public void onClick(Mountain mountain) {
+                Toast.makeText(MainActivity.this, mountain.toString(), Toast.LENGTH_SHORT).show();
             }
 
         });
 
+        new JsonTask(this).execute(JSON_URL); //Hämtar en JSON textfil från en URL
+
         RecyclerView view = findViewById(R.id.recycler_view);
         view.setLayoutManager(new LinearLayoutManager(this));
         view.setAdapter(adapter);
+        Log.d("Mountains", "" + listOfMountains.size());
 
-        new JsonFile(this, this).execute(JSON_FILE); //Hämtar en lokal JSON textfil
-      //  new JsonTask(this).execute(JSON_URL); //Hämtar en JSON textfil från en URL
+
     }
 
     @Override
     public void onPostExecute(String json) {
-        Log.d("MainActivity", json);
+
+        Gson gson = new Gson();
+
+        Type type = new TypeToken<ArrayList<Mountain>>() {}.getType();
+        listOfMountains = gson.fromJson(json, type);
+
+        adapter.notifyDataSetChanged();
+
+        for (Mountain berg : listOfMountains){
+            Log.d("Mountain" , berg.toString());
+        }
+        Log.d("Mountains", json);
+
     }
 
 }

@@ -8,10 +8,10 @@ public class Mountain {
     private String company;
     private String location;
     private String category;
-    private int heightInMeters;
-    private int heightInFeet;
+    private int size;
+    private int cost;
 
-    public Mountain() {
+    /*public Mountain() {
 
         ID="saknar ID";
         name="Saknar namn";
@@ -38,7 +38,7 @@ public class Mountain {
 
     public String getName(){
         return name;
-    }
+    }*/
 
     @Override
     public String toString() {
