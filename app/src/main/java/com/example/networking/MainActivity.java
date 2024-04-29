@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         Log.d("Mountains", "" + listOfMountains.size());
 
         adapter.update(listOfMountains);  //Updaterar listan med mountains
-        adapter.notifyDataSetChanged();
+        adapter.notifyDataSetChanged();  //Refreshar RecyclerView så att den nya listan med berg visas
 
         for (Mountain berg : listOfMountains){
             Log.d("Mountain" , berg.toString());
