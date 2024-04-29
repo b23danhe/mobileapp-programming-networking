@@ -16,11 +16,10 @@ Med denna skickas JSON till en lista med objekt
 `Type type = new TypeToken<List<Mountain>>() {}.getType();
 listOfMountains = gson.fromJson(json, type);`
 
-Jag har tyvärr inte lyckats med att få bergen att visas i min recyclerView. jag har felsökt och
-testat flera olika saker men vet inte vart felet ligger..
+I första inlämningen lyckades jag inte med att få bergen att visas i min recyclerView.
 
 Till slut lyckades jag lokalisera vad som var fel i koden. Jag hade ingen metod som skickade in
-min list med berg i RecyclerView. För att lösa det så fick jag göra följande:
+min lista med berg (listOfMountains) i RecyclerView. För att lösa det så fick jag göra följande:
 
 Skapa en metod för att uppdatera min recyclerView med listan av berg
 `public void update(ArrayList newMountains){
