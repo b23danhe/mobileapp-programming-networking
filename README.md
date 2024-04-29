@@ -17,4 +17,12 @@ testat flera olika saker men vet inte vart felet ligger..
 
 Jag skickar in det jag har och vill försöka lösa det i en komplettering.
 
+Skapar en metod för att uppdatera min recyclerView med listan av berg
+`public void update(ArrayList newMountains){
+    mountains.addAll(newMountains);
+}`
+
+Kallar på metoden i MainActivity
+`adapter.update(listOfMountains);`
+
 ![](screenshot.png)
