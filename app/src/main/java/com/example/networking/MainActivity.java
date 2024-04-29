@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
             @Override
             public void onClick(Mountain mountain) {
                 Toast.makeText(MainActivity.this, mountain.toString(), Toast.LENGTH_SHORT).show();
+                Log.d("Mountain1" , mountain.toString());
             }
 
         });
@@ -43,7 +44,6 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         RecyclerView view = findViewById(R.id.recycler_view);
         view.setLayoutManager(new LinearLayoutManager(this));
         view.setAdapter(adapter);
-        Log.d("Mountains", "" + listOfMountains.size());
 
 
     }
@@ -52,10 +52,11 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
     public void onPostExecute(String json) {
 
         Gson gson = new Gson();
-
         Type type = new TypeToken<List<Mountain>>() {}.getType();
         listOfMountains = gson.fromJson(json, type);
+        Log.d("Mountains", "" + listOfMountains.size());
 
+        adapter.update(listOfMountains);  //Updaterar listan med mountains
         adapter.notifyDataSetChanged();
 
         for (Mountain berg : listOfMountains){

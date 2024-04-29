@@ -59,4 +59,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         void onClick(Mountain mountains);
     }
 
+    //Skickar in listOfMountains i RecyclerView så att dom visas i appen
+    public void update(ArrayList newMountains){
+        mountains.addAll(newMountains);
+    }
+
 }
